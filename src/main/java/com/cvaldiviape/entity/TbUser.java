@@ -33,7 +33,7 @@ public class TbUser extends BaseEntity {
 	@Column(name = "password", nullable = false)
 	private String password;
 	@Builder.Default
-	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	@JoinTable(name = "tb_users_roles", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"), 
 									    inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id"))
 	private Set<TbRole> roles = new HashSet<>();

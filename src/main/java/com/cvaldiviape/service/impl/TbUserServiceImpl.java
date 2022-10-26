@@ -70,8 +70,14 @@ public class TbUserServiceImpl implements TbUserService {
 	
 		TbUser user = this.userMapper.mapRequestToEntity(requestDTO);
 		user.setPassword(this.passwordEncoder.encode(requestDTO.getPassword())); // encriptando la contraseña
-		user.setRoles(addedRoleToList(requestDTO.getRole()));
-	
+		
+		TbRole role = getRoleByIdCustom(1);		
+		if(role==null) {
+			user.setRoles(addedRoleToList("ROLE_ADMIN"));
+		}else {
+			user.setRoles(addedRoleToList(role));
+		}
+		
 		UserResponseDTO dataCreated = this.userMapper.mapEntityToResponseDTO(this.userRepository.save(user));		
 		return dataCreated;
 	}
@@ -118,14 +124,18 @@ public class TbUserServiceImpl implements TbUserService {
 	}
 	
 	// ----------------------------------------------------------- utils ----------------------------------------------------------- //
+	public String auth(AuthRequestDTO authRequestDTO) {
+		return this.jwtTokenProvider.getToken(authRequestDTO)
+				.orElseThrow(() -> new StandarException(HttpStatus.INTERNAL_SERVER_ERROR, "Bad credentials"));
+	}
+	
 	public TbRole getRoleById(Integer id) {
 		return this.roleRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Role", "id", id));
 	}
 	
-	public String auth(AuthRequestDTO authRequestDTO) {
-		return this.jwtTokenProvider.getToken(authRequestDTO)
-				.orElseThrow(() -> new StandarException(HttpStatus.INTERNAL_SERVER_ERROR, "Bad credentials"));
+	public TbRole getRoleByIdCustom(Integer id) {
+		return this.roleRepository.findById(id).orElse(null);
 	}
 	
 	public TbUser getUserIfExistWithRole(Integer roleId, String usernameOrEmail) {
@@ -143,10 +153,14 @@ public class TbUserServiceImpl implements TbUserService {
 	public Set<TbRole> addedRoleToList(String nameRole) {
 		TbRole role = new TbRole();
 		role.setName(nameRole);
-		
 		Set<TbRole> roles = new HashSet<>();	
 		roles.add(role);
-
+		return roles;
+	}
+	
+	public Set<TbRole> addedRoleToList(TbRole role) {
+		Set<TbRole> roles = new HashSet<>();	
+		roles.add(role);
 		return roles;
 	}
 	
