@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cvaldiviape.dto.request.EntityRequestDTO;
 import com.cvaldiviape.dto.response.EntityResponseDTO;
-import com.cvaldiviape.dto.response.page.EntitiesPageResponseDTO;
+import com.cvaldiviape.dto.response.page.base.PageBase;
 import com.cvaldiviape.service.TbEntityService;
 
 @Service
@@ -13,7 +13,7 @@ public class TbEntityServiceImpl implements TbEntityService {
 
 	// ---------------------------------------------------- services ---------------------------------------------------- //
 	@Override
-	public EntitiesPageResponseDTO getAll(Integer numberPage, Integer sizePage, String sortBy, String sortDir) {
+	public PageBase<EntityResponseDTO> getAll(Integer numberPage, Integer sizePage, String sortBy, String sortDir) {
 		// TODO Auto-generated method stub
 		return null;
 	}

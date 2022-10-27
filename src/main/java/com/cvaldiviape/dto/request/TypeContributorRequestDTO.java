@@ -17,10 +17,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class TypeContributorRequestDTO {
 
-	@NotNull(message = "El campo 'name' no debe ser null.")
-	@NotBlank(message = "El campo 'name' es obligatorio.")
-	@Size(max = 50, message = "El campo 'name' debe contener un maximo de 50 caracteres.")
-	@Pattern(regexp= "^[a-zA-ZÀ-ÿ]+(\s?[a-zA-ZÀ-ÿ]+?)+$", message = "El campo 'name' solo admite letras." )
+	@NotNull(message = "El campo 'nombre' no debe ser null.")
+	@NotBlank(message = "El campo 'nombre' es obligatorio.")
+	@Size(max = 50, message = "El campo 'nombre' debe contener un maximo de 50 caracteres.")
+	@Pattern(regexp= "^[a-zA-ZÀ-ÿ]+(\s?[a-zA-ZÀ-ÿ]+?)+$", message = "El campo 'nombre' solo admite letras." )
 	private String name;
 	
 }

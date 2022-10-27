@@ -26,7 +26,6 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("type-document")
 public class TypeDocumentController {
 
-	// ----------------------------------------------------- dependency injection  ----------------------------------------------------- //
 	@Autowired
 	private TbTypeDocumentService typeDocumentService;
 	

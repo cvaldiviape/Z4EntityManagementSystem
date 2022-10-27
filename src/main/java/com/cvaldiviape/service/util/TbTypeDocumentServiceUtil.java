@@ -14,6 +14,7 @@ public class TbTypeDocumentServiceUtil {
 	@Autowired
 	private TbTypeDocumentRepository typeDocumentRepository;
 		
+	// ---------------------------------------------------- utils ---------------------------------------------------- //
 	public TbTypeDocument getTypeDocumentById(Integer id) {
 		return this.typeDocumentRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Tipo de documento", "id", id));

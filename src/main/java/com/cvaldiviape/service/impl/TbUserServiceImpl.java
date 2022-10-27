@@ -97,11 +97,11 @@ public class TbUserServiceImpl implements TbUserService {
 	@Override
 	public AuthResponseDTO login(AuthRequestDTO authRequestDTO) {
 		// TODO Auto-generated method stub
-		String usernameOrEmail = authRequestDTO.getUsername();
-		Integer roleId = authRequestDTO.getRoleId();
+		String username = authRequestDTO.getUsername();
+		Integer roleId = 1;
 
 		String token = this.auth(authRequestDTO);
-		TbUser userEntity = this.getUserIfExistWithRole(roleId, usernameOrEmail);
+		TbUser userEntity = this.getUserIfExistWithRole(roleId, username);
 		TbRole roleEntity = this.getRoleById(roleId);
 		
 		UserAuthResponseDTO userAuthResponseDTO = this.authMapper.mapEntityToResponse(userEntity);

@@ -1,6 +1,5 @@
 package com.cvaldiviape.dto.request;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,8 +21,5 @@ public class AuthRequestDTO {
 	@NotNull(message = "El campo 'password' no debe ser null.")
 	@NotBlank(message = "El campo 'password' es obligatorio.")
 	private String password;
-	@NotNull(message = "El campo 'roleId' no debe ser null.")
-	@Min(value = 1, message = "El campo 'roleId' debe contener un número mayor a '0'")
-	private Integer roleId;
 	
 }
