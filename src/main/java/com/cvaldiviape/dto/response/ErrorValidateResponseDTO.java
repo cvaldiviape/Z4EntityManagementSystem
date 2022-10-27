@@ -11,10 +11,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ErrorDetailResponseDTO {
-
-	private String timestamp;
-	private String message;
-	private String detail;
+public class ErrorValidateResponseDTO {
 	
+	private String field;
+	private String messageError;
+
 }

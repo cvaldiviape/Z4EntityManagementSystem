@@ -28,9 +28,9 @@ public class TbEntity extends BaseEntity {
 	private String companyName;
 	@Column(name = "nombre_comercial", nullable = false, unique = true, columnDefinition="varchar(20)")
 	private String commercialName;
-	@Column(name = "direccion", nullable = false, unique = true, columnDefinition="varchar(50)")
+	@Column(name = "direccion", nullable = false, columnDefinition="varchar(50)")
 	private String address;
-	@Column(name = "telefono", nullable = false, unique = true, columnDefinition="char(9)")
+	@Column(name = "telefono", nullable = false, columnDefinition="char(9)")
 	private String phone;
 	@Column(name = "estado", columnDefinition="bit(1) default false")
 	private Boolean state;

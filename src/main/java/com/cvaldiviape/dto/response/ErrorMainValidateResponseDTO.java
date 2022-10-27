@@ -1,5 +1,6 @@
 package com.cvaldiviape.dto.response;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,10 +12,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ErrorDetailResponseDTO {
+public class ErrorMainValidateResponseDTO {
 
 	private String timestamp;
-	private String message;
+	private List<ErrorValidateResponseDTO> errorsValidate;
 	private String detail;
 	
 }

@@ -1,9 +1,8 @@
 package com.cvaldiviape.exception;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import com.cvaldiviape.dto.response.ErrorDetailResponseDTO;
+import com.cvaldiviape.dto.response.ErrorMainValidateResponseDTO;
+import com.cvaldiviape.dto.response.ErrorValidateResponseDTO;
 import com.cvaldiviape.util.AppHelpers;
 
 @ControllerAdvice 
@@ -56,14 +57,13 @@ public class GlobalHandlerException  extends ResponseEntityExceptionHandler {
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, 
-			                                                      HttpStatus status, WebRequest request) {
-		Map<String, String> errors = new HashMap<String, String>();	
-		ex.getBindingResult().getAllErrors().forEach((error) -> {
-			String nameField = ((FieldError)error).getField();
-			String message = error.getDefaultMessage();
-			errors.put(nameField, message);
-		});
-		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+			                                                                            HttpStatus status, WebRequest webRequest) {
+		String dateTime = this.appHelpers.convertLocalDateTimeToString(LocalDateTime.now());
+		List<ErrorValidateResponseDTO> listErrors = ex.getBindingResult().getAllErrors().stream().map((error) -> 
+			new ErrorValidateResponseDTO(((FieldError)error).getField(), error.getDefaultMessage())
+		).collect(Collectors.toList());
+		ErrorMainValidateResponseDTO errorMainValidateResponseDTO = new ErrorMainValidateResponseDTO(dateTime, listErrors, webRequest.getDescription(false));
+		return new ResponseEntity<>(errorMainValidateResponseDTO, HttpStatus.BAD_REQUEST);		
 	}
 	
 }
