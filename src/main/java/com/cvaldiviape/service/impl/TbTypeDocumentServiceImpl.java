@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cvaldiviape.dto.request.TypeDocumentRequestDTO;
 import com.cvaldiviape.dto.response.TypeDocumentResponseDTO;
-import com.cvaldiviape.dto.response.page.base.PageBase;
+import com.cvaldiviape.dto.response.page.PageBase;
 import com.cvaldiviape.entity.TbTypeDocument;
 import com.cvaldiviape.mapper.TbTypeDocumentMapper;
 import com.cvaldiviape.repository.TbTypeDocumentRepository;
@@ -66,6 +66,7 @@ public class TbTypeDocumentServiceImpl implements TbTypeDocumentService {
 		this.serviceUtil.verifyNameUnique(requestDTO.getName());
 		this.serviceUtil.verifyCodeUnique(requestDTO.getCode());
 		TbTypeDocument entity = this.typeDocumentMapper.mapRequestToEntity(requestDTO);
+		entity.setState(false);
 		return  this.typeDocumentMapper.mapEntityToResponseDTO(this.typeDocumentRepository.save(entity));	
 	}
 

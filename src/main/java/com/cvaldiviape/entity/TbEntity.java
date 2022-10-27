@@ -32,7 +32,7 @@ public class TbEntity extends BaseEntity {
 	private String address;
 	@Column(name = "telefono", nullable = false, columnDefinition="char(9)")
 	private String phone;
-	@Column(name = "estado", columnDefinition="bit(1) default false")
+	@Column(name = "estado",nullable = false)
 	private Boolean state;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipo_documento")

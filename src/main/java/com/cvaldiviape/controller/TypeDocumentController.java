@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cvaldiviape.dto.request.TypeDocumentRequestDTO;
 import com.cvaldiviape.dto.response.MainResponse;
 import com.cvaldiviape.dto.response.TypeDocumentResponseDTO;
-import com.cvaldiviape.dto.response.page.base.PageBase;
+import com.cvaldiviape.dto.response.page.PageBase;
 import com.cvaldiviape.service.TbTypeDocumentService;
 import com.cvaldiviape.util.AppConstants;
 import io.swagger.annotations.ApiOperation;

@@ -15,7 +15,7 @@ import com.cvaldiviape.dto.response.RoleResponseDTO;
 import com.cvaldiviape.dto.response.TokenResponseDTO;
 import com.cvaldiviape.dto.response.UserAuthResponseDTO;
 import com.cvaldiviape.dto.response.UserResponseDTO;
-import com.cvaldiviape.dto.response.page.UsersPageResponseDTO;
+import com.cvaldiviape.dto.response.page.PageBase;
 import com.cvaldiviape.entity.TbRole;
 import com.cvaldiviape.entity.TbUser;
 import com.cvaldiviape.exception.ResourceNotFoundException;
@@ -52,7 +52,7 @@ public class TbUserServiceImpl implements TbUserService {
 	
 	// ---------------------------------------------------- services ---------------------------------------------------- //
 	@Override
-	public UsersPageResponseDTO getAll(Integer numberPage, Integer sizePage, String sortBy, String sortDir) {
+	public PageBase<UserResponseDTO> getAll(Integer numberPage, Integer sizePage, String sortBy, String sortDir) {
 		// TODO Auto-generated method stub
 		return null;
 	}

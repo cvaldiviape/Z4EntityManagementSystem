@@ -1,5 +1,6 @@
 package com.cvaldiviape.dto.request;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -20,7 +21,7 @@ public class EntityRequestDTO {
 	@NotNull(message = "El campo 'nroDocument' no debe ser null.")
 	@NotBlank(message = "El campo 'nroDocument' es obligatorio.")
 	@Size(min = 8, max = 8, message = "El campo 'nroDocument' debe contener 8 números.")
-	@Pattern(regexp= "^[0-9]$", message = "El campo 'nroDocument' solo admite números.")
+	@Pattern(regexp= "^[0-9]+$", message = "El campo 'nroDocument' solo admite números.")
 	private String nroDocument;
 	@NotNull(message = "El campo 'companyName' no debe ser null.")
 	@NotBlank(message = "El campo 'companyName' es obligatorio.")
@@ -40,7 +41,13 @@ public class EntityRequestDTO {
 	@NotNull(message = "El campo 'phone' no debe ser null.")
 	@NotBlank(message = "El campo 'phone' es obligatorio.")
 	@Size(max = 20, message = "El campo 'phone' debe contener un maximo de 20 caracteres.")
-	@Pattern(regexp= "^[0-9]$", message = "El campo 'phone' solo admite números." )
+	@Pattern(regexp= "^[0-9]+$", message = "El campo 'phone' solo admite números." )
 	private String phone;
+	@NotNull(message = "El campo 'typeContributorId' no debe ser null.")
+	@Min(value = 1, message = "El campo 'typeContributorId' debe contener un número mayor a '0'")
+	private Integer typeContributorId;
+	@NotNull(message = "El campo 'typeDocumentId' no debe ser null.")
+	@Min(value = 1, message = "El campo 'typeContributorId' debe contener un número mayor a '0'")
+	private Integer typeDocumentId;
 	
 }

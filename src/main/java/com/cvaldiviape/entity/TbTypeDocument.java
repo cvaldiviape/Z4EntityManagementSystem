@@ -31,7 +31,7 @@ public class TbTypeDocument extends BaseEntity {
 	private String name;
 	@Column(name = "descripcion", columnDefinition="varchar(500)")
 	private String description;
-	@Column(name = "estado", columnDefinition="bit(1) default false")
+	@Column(name = "estado", nullable = false)
 	private Boolean state;
 	@Builder.Default
 	@JsonBackReference

@@ -15,7 +15,7 @@ public class TbTypeContributorServiceUtil {
 	private TbTypeContributorRepository typeContributorRepository;
 
 	// ---------------------------------------------------- utils ---------------------------------------------------- //
-	public TbTypeContributor getTypeContributor(Integer id) {
+	public TbTypeContributor getTypeContributorById(Integer id) {
 		return this.typeContributorRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Tipo de contribuyente", "id", id));
 	}

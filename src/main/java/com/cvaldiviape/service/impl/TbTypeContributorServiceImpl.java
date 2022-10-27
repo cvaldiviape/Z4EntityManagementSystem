@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cvaldiviape.dto.request.TypeContributorRequestDTO;
 import com.cvaldiviape.dto.response.TypeContributorResponseDTO;
-import com.cvaldiviape.dto.response.page.base.PageBase;
+import com.cvaldiviape.dto.response.page.PageBase;
 import com.cvaldiviape.entity.TbTypeContributor;
 import com.cvaldiviape.mapper.TbTypeContributorMapper;
 import com.cvaldiviape.repository.TbTypeContributorRepository;
@@ -55,7 +55,7 @@ public class TbTypeContributorServiceImpl implements TbTypeContributorService {
 	@Override
 	public TypeContributorResponseDTO getById(Integer id) {
 		// TODO Auto-generated method stub
-		TbTypeContributor entity = this.serviceUtil.getTypeContributor(id);
+		TbTypeContributor entity = this.serviceUtil.getTypeContributorById(id);
 		return this.typeContributorMapper.mapEntityToResponseDTO(entity);
 	}
 
@@ -64,24 +64,23 @@ public class TbTypeContributorServiceImpl implements TbTypeContributorService {
 		// TODO Auto-generated method stub
 		this.serviceUtil.verifyNameUnique(requestDTO.getName());
 		TbTypeContributor entity = this.typeContributorMapper.mapRequestToEntity(requestDTO);
+		entity.setState(false);
 		return  this.typeContributorMapper.mapEntityToResponseDTO(this.typeContributorRepository.save(entity));	
 	}
 
 	@Override
 	public TypeContributorResponseDTO update(Integer id, TypeContributorRequestDTO requestDTO) {
 		// TODO Auto-generated method stub
-		TbTypeContributor entityCurrent = this.serviceUtil.getTypeContributor(id);
+		TbTypeContributor entityCurrent = this.serviceUtil.getTypeContributorById(id);
 		this.serviceUtil.verifyNameUnique(requestDTO.getName(), entityCurrent.getName());
-		
 		entityCurrent.setName(requestDTO.getName());
-		
 		return this.typeContributorMapper.mapEntityToResponseDTO(this.typeContributorRepository.save(entityCurrent));
 	}
 
 	@Override
 	public TypeContributorResponseDTO delete(Integer id) {
 		// TODO Auto-generated method stub
-		TbTypeContributor entity = this.serviceUtil.getTypeContributor(id);
+		TbTypeContributor entity = this.serviceUtil.getTypeContributorById(id);
 		this.typeContributorRepository.delete(entity);
 		return this.typeContributorMapper.mapEntityToResponseDTO(entity);
 	}

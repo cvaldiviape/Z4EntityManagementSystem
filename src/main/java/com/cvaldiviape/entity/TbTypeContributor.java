@@ -27,7 +27,7 @@ public class TbTypeContributor extends BaseEntity {
 
 	@Column(name = "nombre", nullable = false, unique = true, columnDefinition="varchar(50)")
 	private String name;
-	@Column(name = "estado", columnDefinition="bit(1) default false")
+	@Column(name = "estado",nullable = false)
 	private Boolean state;
 	@Builder.Default
 	@JsonBackReference

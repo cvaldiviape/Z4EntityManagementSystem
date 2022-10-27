@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cvaldiviape.dto.request.RoleRequestDTO;
 import com.cvaldiviape.dto.response.RoleResponseDTO;
-import com.cvaldiviape.dto.response.page.RolesPageResponseDTO;
+import com.cvaldiviape.dto.response.page.PageBase;
 import com.cvaldiviape.entity.TbRole;
 import com.cvaldiviape.exception.ResourceNotFoundException;
 import com.cvaldiviape.mapper.TbRoleMapper;
@@ -23,7 +23,7 @@ public class TbRoleServiceImpl implements TbRoleService {
 	
 	// ---------------------------------------------------- services ---------------------------------------------------- //
 	@Override
-	public RolesPageResponseDTO getAll(Integer numberPage, Integer sizePage, String sortBy, String sortDir) {
+	public PageBase<RoleResponseDTO> getAll(Integer numberPage, Integer sizePage, String sortBy, String sortDir) {
 		// TODO Auto-generated method stub
 		return null;
 	}

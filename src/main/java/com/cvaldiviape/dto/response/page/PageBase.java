@@ -1,8 +1,6 @@
 package com.cvaldiviape.dto.response.page;
 
 import java.util.List;
-import com.cvaldiviape.dto.response.TypeContributorResponseDTO;
-import com.cvaldiviape.dto.response.page.base.PageBase;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +12,13 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class TypeContributorsPageResponseDTO {
-
-	private List<TypeContributorResponseDTO> typeContributors;
+public class PageBase<E> {
+	
+	private Integer numberPage;
+	private Integer sizePage;
+	private Integer totalPages;
+	private Boolean isLastPage;
+	private Long totalElements;
+	private List<E> elements;
 	
 }
